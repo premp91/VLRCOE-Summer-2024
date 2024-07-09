@@ -26,3 +26,4 @@ temperatures = resistance_solver.solve_thermal_network(heat_inputs, bcs, T_bcs)
 
 print("Temperatures at each node:", temperatures)
 resistance_solver.visualize_network()
+#test
