@@ -15,3 +15,4 @@ T_bcs = [0]
 resistance_solver = Resistance(connectivity, resistances, num_nodes, bcs, T_bcs, heat_input_nodes, heat_inputs)
 temperatures = resistance_solver.solve_thermal_network()
 print("Temperatures at each node:", temperatures)
+resistance_solver.visualize_network()
