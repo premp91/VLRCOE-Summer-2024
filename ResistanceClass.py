@@ -15,6 +15,9 @@ class Resistance:
         # for node in bcs:
         #   if node is in heat_input_nodes:
         #       raise ValueError("Cannot have overlap between bcs and externally apploied loads")
+
+    
+
     
     def assemble_resistance_matrix(self):
         # Initialize global resistance matrix to zeros
@@ -23,8 +26,8 @@ class Resistance:
         # Assemble global resistance matrix using connectivity array
         for i, (n1, n2) in enumerate(self.connectivity):
             Rth = self.resistances[i]
-            #G = 1 / Rth  # Conductance
-            G =  Rth  # Conductance
+            G = 1 / Rth  # Conductance
+            #G =  Rth  # Resistance
             # Adding conductance to the global resistance matrix
             R[n1-1, n1-1] += G
             R[n2-1, n2-1] += G
@@ -46,6 +49,7 @@ class Resistance:
     def solve_thermal_network(self, heat_inputs, bcs, T_bcs):
         # Convert the heat inputs list to a numpy array
         Q = np.array(heat_inputs)
+        print(Q)
 
         R_reduced, Q_reduced, reduced = self.apply_boundary_conditions(Q, bcs)
 
