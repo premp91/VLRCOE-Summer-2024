@@ -1,2 +1,2 @@
 # VLRCOE-Summer-2024
-Thermals
+Analytic thermal resistance network model
