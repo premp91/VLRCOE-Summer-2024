@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 from ConnectivityMap2D import Resistance2D 
 
 class Resistance:
-    def __init__(self, num_nodes, default_resistance,bcs, T_bcs, heat_input_nodes, heat_inputs,lx,ly,nx,ny):
+    def __init__(self, default_resistance, bcs, T_bcs, heat_input_nodes, heat_inputs,lx,ly,nx,ny):
         connectivity_solver = Resistance2D(lx,ly,nx,ny)
 
         self.connectivity = connectivity_solver.assemble_connectivity()
         self.resistances = len(self.connectivity)*[default_resistance]
-        self.num_nodes = num_nodes
+        self.num_nodes = (nx+1)*(ny+1)
         self.bcs = [x - 1 for x in bcs]
         self.heat_input_nodes = heat_input_nodes
         self.heat_inputs = heat_inputs
@@ -76,3 +76,5 @@ class Resistance:
         T[bcs] = T_bcs
 
         return T
+
+
